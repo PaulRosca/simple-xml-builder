@@ -1,9 +1,6 @@
 "use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-const fs_1 = __importDefault(require("fs"));
+const fs = require("fs");
 const encodeHTML = (stringData) => {
     return stringData.replace(/&/g, "&amp;")
         .replace(/</g, "&lt;")
@@ -15,8 +12,16 @@ const encodeHTML = (stringData) => {
 ;
 ;
 class XMLBuilder {
+    __fd;
+    __namespace;
+    __lvl;
+    __tags;
+    __buffer;
+    __buffSize;
+    __lines;
+    __format;
     constructor({ outputFile, nameSpace, buffSize = 50000, format = false }) {
-        this.__fd = fs_1.default.openSync(outputFile, "w");
+        this.__fd = fs.openSync(outputFile, "w");
         this.setNamespace(nameSpace);
         this.__lvl = 0;
         this.__tags = [];
@@ -40,7 +45,7 @@ class XMLBuilder {
     ;
     __flushBuffer() {
         if (this.__buffer !== '') {
-            fs_1.default.appendFileSync(this.__fd, this.__buffer);
+            fs.appendFileSync(this.__fd, this.__buffer);
             this.__buffer = '';
             this.__lines = 0;
         }
@@ -114,5 +119,6 @@ class XMLBuilder {
     }
     ;
 }
-exports.default = XMLBuilder;
+;
+module.exports = XMLBuilder;
 //# sourceMappingURL=xmlBuilder.js.map

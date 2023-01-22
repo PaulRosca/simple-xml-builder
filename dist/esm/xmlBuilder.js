@@ -1,4 +1,4 @@
-import fs from "fs";
+const fs = require("fs");
 const encodeHTML = (stringData) => {
     return stringData.replace(/&/g, "&amp;")
         .replace(/</g, "&lt;")
@@ -9,7 +9,15 @@ const encodeHTML = (stringData) => {
 ;
 ;
 ;
-export default class XMLBuilder {
+class XMLBuilder {
+    __fd;
+    __namespace;
+    __lvl;
+    __tags;
+    __buffer;
+    __buffSize;
+    __lines;
+    __format;
     constructor({ outputFile, nameSpace, buffSize = 50000, format = false }) {
         this.__fd = fs.openSync(outputFile, "w");
         this.setNamespace(nameSpace);
@@ -109,4 +117,7 @@ export default class XMLBuilder {
     }
     ;
 }
+;
+module.exports = XMLBuilder;
+export {};
 //# sourceMappingURL=xmlBuilder.js.map

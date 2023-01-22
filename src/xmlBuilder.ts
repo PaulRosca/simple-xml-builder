@@ -1,4 +1,4 @@
-import fs from "fs";
+const fs = require("fs");
 
 const encodeHTML = (stringData: string): string => {
     return stringData.replace(/&/g, "&amp;")
@@ -27,7 +27,7 @@ export interface IAdd {
     processing?: boolean
 };
 
-export default class XMLBuilder {
+class XMLBuilder {
     private __fd: number;
     private __namespace: string | undefined | null;
     private __lvl: number;
@@ -123,4 +123,6 @@ export default class XMLBuilder {
         console.log("INDENTATION LEVEL: " + this.__lvl);
         return this;
     };
-}
+};
+
+module.exports = XMLBuilder;

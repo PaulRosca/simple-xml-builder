@@ -4,12 +4,11 @@
   "description": "A simple module for building XML files",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
-  "types": "dist/declarations/index.d.ts",
-  "type": "module",
+  "types": "dist/cjs/index.d.ts",
   "scripts": {
     "build": "rm -rf dist/ & npm run build:esm & npm run build:cjs",
-    "build:esm": "tsc",
-    "build:cjs": "tsc --module CommonJS --outDir dist/cjs"
+    "build:esm": "tsc -p tsconfig.esm.json",
+    "build:cjs": "tsc -p tsconfig.cjs.json"
   },
   "repository": {
     "type": "git",

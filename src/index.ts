@@ -1,3 +1,3 @@
-import XMLBuilder from "./xmlBuilder.js";
+const XMLBuilder = require("./xmlBuilder.js");
 
-export default XMLBuilder;
+module.exports = XMLBuilder;

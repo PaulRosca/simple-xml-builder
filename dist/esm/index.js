@@ -1,3 +1,4 @@
-import XMLBuilder from "./xmlBuilder.js";
-export default XMLBuilder;
+"use strict";
+const XMLBuilder = require("./xmlBuilder.js");
+module.exports = XMLBuilder;
 //# sourceMappingURL=index.js.map

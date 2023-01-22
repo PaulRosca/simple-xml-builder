@@ -1,7 +1,6 @@
-import XMLBuilder from "../index.js";
+import XMLBuilder from "../src/index.js";
 
 const xml = new XMLBuilder({ outputFile: "example2.xml", format: true });
-
 xml.add({ tag: "xml", attributes: [{ key: "version", value: "1.0" }, { key: "encoding", value: "UTF-8" }], processing: true })
     .setNamespace("fb")
     .add({ tag: "post", attributes: [{ key: "id", value: "1" }] })
