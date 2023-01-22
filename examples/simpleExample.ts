@@ -1,4 +1,4 @@
-import XMLBuilder from "../src/index.js";
+const XMLBuilder = require("../src/index.js");
 
 const xml = new XMLBuilder({ outputFile: "example1.xml", format: true });
 
