@@ -1,4 +1,4 @@
-const fs = require("fs");
+import fs from "fs";
 const encodeHTML = (stringData) => {
     return stringData.replace(/&/g, "&amp;")
         .replace(/</g, "&lt;")
@@ -9,7 +9,7 @@ const encodeHTML = (stringData) => {
 ;
 ;
 ;
-class XMLBuilder {
+export class XMLBuilder {
     __fd;
     __namespace;
     __lvl;
@@ -18,7 +18,8 @@ class XMLBuilder {
     __buffSize;
     __lines;
     __format;
-    constructor({ outputFile, nameSpace, buffSize = 50000, format = false }) {
+    __delimiter;
+    constructor({ outputFile, nameSpace, buffSize = 50000, format = false, delimiter = "  " }) {
         this.__fd = fs.openSync(outputFile, "w");
         this.setNamespace(nameSpace);
         this.__lvl = 0;
@@ -27,12 +28,13 @@ class XMLBuilder {
         this.__buffSize = buffSize;
         this.__lines = 0;
         this.__format = format;
+        this.__delimiter = delimiter;
     }
     ;
     __tabs(lvl) {
         if (this.__format) {
             for (let i = 0; i < lvl; i++)
-                this.__buffer += "\t";
+                this.__buffer += this.__delimiter;
         }
     }
     ;
@@ -118,6 +120,4 @@ class XMLBuilder {
     ;
 }
 ;
-module.exports = XMLBuilder;
-export {};
 //# sourceMappingURL=xmlBuilder.js.map

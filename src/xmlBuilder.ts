@@ -1,4 +1,4 @@
-const fs = require("fs");
+import fs from "fs";
 
 const encodeHTML = (stringData: string): string => {
     return stringData.replace(/&/g, "&amp;")
@@ -12,7 +12,8 @@ export interface IXMLBuilder {
     outputFile: string,
     nameSpace?: string,
     buffSize?: number,
-    format?: boolean
+    format?: boolean,
+    delimiter?: string
 };
 
 export interface IAttribute {
@@ -27,7 +28,7 @@ export interface IAdd {
     processing?: boolean
 };
 
-class XMLBuilder {
+export class XMLBuilder {
     private __fd: number;
     private __namespace: string | undefined | null;
     private __lvl: number;
@@ -36,8 +37,9 @@ class XMLBuilder {
     private __buffSize: number;
     private __lines: number;
     private __format: boolean;
+    private __delimiter: string;
 
-    constructor({ outputFile, nameSpace, buffSize = 50000, format = false }: IXMLBuilder) {
+    constructor({ outputFile, nameSpace, buffSize = 50000, format = false, delimiter = "  " }: IXMLBuilder) {
         this.__fd = fs.openSync(outputFile, "w");
         this.setNamespace(nameSpace);
         this.__lvl = 0;
@@ -46,10 +48,11 @@ class XMLBuilder {
         this.__buffSize = buffSize;
         this.__lines = 0;
         this.__format = format;
+        this.__delimiter = delimiter;
     };
     private __tabs(lvl: number): void {
         if (this.__format) {
-            for (let i = 0; i < lvl; i++) this.__buffer += "\t";
+            for (let i = 0; i < lvl; i++) this.__buffer += this.__delimiter;
         }
     };
     private __addToBuffer(content: string): void {
@@ -125,4 +128,3 @@ class XMLBuilder {
     };
 };
 
-module.exports = XMLBuilder;

@@ -1,4 +1,4 @@
-const XMLBuilder = require("../src/index.js");
+import { XMLBuilder } from "simple-xml-builder";
 
 const xml = new XMLBuilder({ outputFile: "example1.xml", format: true });
 

@@ -1,6 +1,10 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-const fs = require("fs");
+exports.XMLBuilder = void 0;
+const fs_1 = __importDefault(require("fs"));
 const encodeHTML = (stringData) => {
     return stringData.replace(/&/g, "&amp;")
         .replace(/</g, "&lt;")
@@ -20,8 +24,9 @@ class XMLBuilder {
     __buffSize;
     __lines;
     __format;
-    constructor({ outputFile, nameSpace, buffSize = 50000, format = false }) {
-        this.__fd = fs.openSync(outputFile, "w");
+    __delimiter;
+    constructor({ outputFile, nameSpace, buffSize = 50000, format = false, delimiter = "  " }) {
+        this.__fd = fs_1.default.openSync(outputFile, "w");
         this.setNamespace(nameSpace);
         this.__lvl = 0;
         this.__tags = [];
@@ -29,12 +34,13 @@ class XMLBuilder {
         this.__buffSize = buffSize;
         this.__lines = 0;
         this.__format = format;
+        this.__delimiter = delimiter;
     }
     ;
     __tabs(lvl) {
         if (this.__format) {
             for (let i = 0; i < lvl; i++)
-                this.__buffer += "\t";
+                this.__buffer += this.__delimiter;
         }
     }
     ;
@@ -45,7 +51,7 @@ class XMLBuilder {
     ;
     __flushBuffer() {
         if (this.__buffer !== '') {
-            fs.appendFileSync(this.__fd, this.__buffer);
+            fs_1.default.appendFileSync(this.__fd, this.__buffer);
             this.__buffer = '';
             this.__lines = 0;
         }
@@ -119,6 +125,6 @@ class XMLBuilder {
     }
     ;
 }
+exports.XMLBuilder = XMLBuilder;
 ;
-module.exports = XMLBuilder;
 //# sourceMappingURL=xmlBuilder.js.map

@@ -5,10 +5,11 @@
     "outDir": "dist/esm",
     "declaration": true,
     "declarationMap": true,
+    "declarationDir": "dist/types",
     "sourceMap": true,
     "strict": true,
     "esModuleInterop": true,
-    "moduleResolution": "node",
+    "moduleResolution": "nodenext",
     "baseUrl": ".",
     "paths": {
       "*": ["src/*"]

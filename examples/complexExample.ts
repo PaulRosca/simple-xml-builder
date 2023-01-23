@@ -1,4 +1,4 @@
-const XMLBuilder = require("../src/index.js");
+import { XMLBuilder } from "simple-xml-builder";
 
 const xml = new XMLBuilder({ outputFile: "example2.xml", format: true });
 xml.add({ tag: "xml", attributes: [{ key: "version", value: "1.0" }, { key: "encoding", value: "UTF-8" }], processing: true })

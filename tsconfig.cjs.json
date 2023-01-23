@@ -3,12 +3,10 @@
     "module": "commonjs",
     "target": "esnext",
     "outDir": "dist/cjs",
-    "declaration": true,
-    "declarationMap": true,
     "sourceMap": true,
     "strict": true,
     "esModuleInterop": true,
-    "moduleResolution": "node",
+    "moduleResolution": "nodenext",
     "baseUrl": ".",
     "paths": {
       "*": ["src/*"]

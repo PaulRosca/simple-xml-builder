@@ -1,2 +1,2 @@
-declare const XMLBuilder: any;
+export * from "./xmlBuilder";
 //# sourceMappingURL=index.d.ts.map
