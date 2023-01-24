@@ -1,6 +1,6 @@
 {
   "name": "simple-xml-builder",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A simple node package for building large XML files",
   "keywords": [
     "xml", "xml-builder", "large", "files"
