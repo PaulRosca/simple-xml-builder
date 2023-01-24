@@ -130,7 +130,7 @@ The `attributes` option takes an array of `Attribute`s and adds them to the tag.
 ```XML
 <? ... ?>
 ```
-### `.txt(conent: string)`
+### `.txt(content: string)`
 The `txt` function is used to add text content inside a tag. After a call to this function, the current tag will be closed automatically
 ### `.close()`
 The `close` function is used to close the current opened tag.
