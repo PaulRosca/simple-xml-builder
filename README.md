@@ -57,7 +57,7 @@ xml.add({ tag: "xml", attributes: [{ key: "version", value: "1.0" }, { key: "enc
     .setNamespace(null)
     .add({ tag: "user" })
     .txt("John Doe")
-    .add({ tag: "conent" })
+    .add({ tag: "content" })
     .txt("hello")
     .close()
     .setNamespace("ig")
@@ -77,9 +77,9 @@ Output
   <user>
     John Doe
   </user>
-  <conent>
+  <content>
     hello
-  </conent>
+  </content>
 </post>
 <ig:post>
   <user>
